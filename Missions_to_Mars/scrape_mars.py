@@ -19,7 +19,6 @@ def scrape_info():
 
     # Visit URL of page to be scraped through splinter
     url = 'https://mars.nasa.gov/news/'
-
     browser.visit(url)
     time.sleep(1)
 
@@ -28,20 +27,18 @@ def scrape_info():
 
     # Parse with BeautifulSoup
     soup = BeautifulSoup(html, 'html.parser')
-
+    
+    # Extract most recent article title and text
     news_title = soup.find_all('div', class_ = 'content_title')[1].text
     news_p = soup.find_all('div', class_ = 'article_teaser_body')[0].text
 
-    # ## JPL Mars Space Images - Featured Image
 
+    # ## JPL Mars Space Images - Featured Image
 
     # Visit URL of page to be scraped through splinter
     jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
-
     browser.visit(jpl_url)
     time.sleep(1)
-
-
 
     #Click on the the button go to the full image
     full_image = browser.find_by_id("full_image")
@@ -59,24 +56,17 @@ def scrape_info():
     # Parse with BeautifulSoup
     jpl_soup = BeautifulSoup(jpl_html, 'html.parser')
 
-
-    # In[ ]:
-
-
     #Retrieve backgroud image url from style tag/scrape url
     img_url = jpl_soup.find("img", class_ = "main_image")["src"]
     featured_img_url = "https://www.jpl.nasa.gov" + img_url
-    featured_img_url
 
 
     # ## Mars Facts
-
 
     #Visit the Mars Facts webpage
     facts_url = "https://space-facts.com/mars/"
     browser.visit(facts_url)
     time.sleep(1)
-
 
     # Use Pandas to parse the URL
     tables = pd.read_html(facts_url)
@@ -129,11 +119,11 @@ def scrape_info():
 
     # Assigning scraped data to a page
 
-    mars_page = {}
-    mars_page["news_title"] = news_title
-    mars_page["news_p"] = news_p
-    mars_page["featured_img_url"] = featured_img_url
-    mars_page["facts_html"] = facts_html
-    mars_page["hemisphere_image_urls"] = hemisphere_image_urls
+    mars_data = {}
+    mars_data["news_title"] = news_title
+    mars_data["news_p"] = news_p
+    mars_data["featured_img_url"] = featured_img_url
+    mar_data["facts_html"] = facts_html
+    mars_data["hemisphere_image_urls"] = hemisphere_image_urls
 
-    return mars_page
+    return mars_data
