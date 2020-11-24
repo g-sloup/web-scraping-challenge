@@ -38,14 +38,14 @@
       <!-- First section is for the featured Mars Image -->
       <div class="col-md-8">
         <h2>Featured Mars Image</h2>
-        <img src="{{mars_data.featured_img_url}}" height="600" width="750" class="img-responsive">
+        <img src="{{mars_data.featured_img_url}}" alt="Featured Mars Image" height="600" width="750" class="img-responsive">
       </div>
       
       <!-- Mars Facts Rows -->
         <div class="row">
           <div class="col-md-12">
             <h4><b>Mars Facts</b></h4>
-            {{mars_data.mars_facts|safe}}
+            {{mars_data.facts_html | safe}}
           </div>
         </div>
       </div>
@@ -59,12 +59,12 @@
 
     <div class="row">
       <div class="col-sm-6">
-        <img src={{mars_data.mars_hemispheres [0].img_url}} height="400" width="400" class="img_responsive"
-          <h4><b>{{mars_data.mars_hemispheres[0].title}}</b></h4>
+        <img src="{{mars_data.hemisphere_image_urls[0].img_url | default('static/images/error.png', true) }}" alt="Hemisphere Image 1" height="400" width="400" class="img_responsive">
+          <h4><b>{{mars_data.hemisphere_image_urls[0].title}}</b></h4>
       </div>
       <div class="col-sm-6">
-        <img src={{mars_data.mars_hemispheres [1].img_url}} height="400" width="400" class="img_responsive" <h4>
-        <b>{{mars.mars_hemispheres[1].title}}</b></h4>
+        <img src="{{mars_data.hemisphere_image_urls[1].img_url | default('static/images/error.png', true) }}" alt="Hemisphere Image 2" height="400" width="400" class="img_responsive"> 
+          <h4><b>{{mars_data.hemisphere_image_urls[1].title}}</b></h4>
       </div>
     </div>
     <br>
@@ -72,16 +72,15 @@
 
     <div class="row">
       <div class="col-sm-6">
-        <img src={{mars_data.mars_hemispheres [2].img_url}} height="400" width="400" class="img_responsive"
-          <h4><b>{{mars.mars_hemispheres[2].title}}</b></h4>
+        <img src="{{mars_data.hemisphere_image_urls[2].img_url | default('static/images/error.png', true) }}" alt="Hemisphere Image 3" height="400" width="400" class="img_responsive">
+          <h4><b>{{mars_data.hemisphere_image_urls[2].title}}</b></h4>
       </div>
       <div class="col-sm-6">
         <!-- </div> -->
-        <img src={{mars_data.mars_hemispheres [3].img_url}} height="400" width="400" class="img_responsive"
-          <h4><b>{{mars_data.mars_hemispheres[3].title}}</b></h4>
+        <img src="{{mars_data.hemisphere_image_urls[3].img_url | default('static/images/error.png', true) }}" alt="Hemisphere Image 4" height="400" width="400" class="img_responsive">
+          <h4><b>{{mars_data.hemisphere_image_urls[3].title}}</b></h4>
       </div>
     </div>
-
   </div>
   </div>
   </div>

@@ -117,13 +117,43 @@ def scrape_info():
         image_url = downloads.find("a")["href"]
         hemisphere_image_urls.append({"title": title, "img_url": image_url})
 
+    # for i in range(len(results)):
+    #     hemisphere={}
+    #     browser.find_by_css("a.product-item h3")[i].click()
+    #     image_url=browser.links.find_by_text('Sample').first['href']
+    #     title=browser.find_by_css("h2.title").text
+    #     hemisphere["img_url"]=image_url
+    #     hemisphere["title"]=title
+    #     hem_image_urls.append(hemisphere)
+    #     browser.back()
+
+
+    # hem_image_urls
+
+
+# # Store data in a dictionary
+#     mars_data = {
+#         "hem_image_urls": hem_image_urls,
+#         "mars_fact": mars_facts,
+#         "full_image_url": full_image_url,
+#         "news_p":news_p,
+#         "news_title":news_title
+#     }
+
     # Assigning scraped data to a page
 
     mars_data = {}
     mars_data["news_title"] = news_title
     mars_data["news_p"] = news_p
     mars_data["featured_img_url"] = featured_img_url
-    mar_data["facts_html"] = facts_html
+    mars_data["facts_html"] = facts_html
     mars_data["hemisphere_image_urls"] = hemisphere_image_urls
 
+    # Close the browser after scraping
+    browser.quit()
+
     return mars_data
+
+
+if __name__ == "__main__":
+    print(scrape_info())
